@@ -25,7 +25,7 @@ jobs:
 
       # Step 3: Initialize Terraform
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -upgrade -reconfigure
 
       # Step 4: Enforce Terraform formatting
       - name: Terraform Format Check
