@@ -1,10 +1,10 @@
 //Docker network
 resource "docker_network" "app_network" {
-    name = "${var.network_name}-${terraform.workspace}"
+  name = "${var.network_name}-${terraform.workspace}"
 }
 
 resource "docker_volume" "db_data" {
-    name = "db_data-${terraform.workspace}"
+  name = "db_data-${terraform.workspace}"
 }
 
 //PostgreSQL container
@@ -20,7 +20,7 @@ resource "docker_container" "db" {
     "POSTGRES_DB=${var.db_name}"
   ]
 
-   healthcheck {
+  healthcheck {
     test     = ["CMD-SHELL", "pg_isready -U ${var.db_user}"]
     interval = "10s"
     timeout  = "5s"
