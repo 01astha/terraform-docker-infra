@@ -1,0 +1,7 @@
+# Production database configuration
+db_user     = "produser"
+db_password = "prodpass123"
+db_name     = "proddb"
+
+# Different port to avoid clashes
+web_port = 9090

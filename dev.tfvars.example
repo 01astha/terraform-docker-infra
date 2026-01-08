@@ -1,0 +1,7 @@
+# Development database configuration
+db_user     = "devuser"
+db_password = "devpass123"
+db_name     = "devdb"
+
+# Expose app on local dev port
+web_port = 8080
