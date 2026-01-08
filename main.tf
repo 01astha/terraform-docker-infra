@@ -1,15 +1,15 @@
 //Docker network
 resource "docker_network" "app_network" {
-    name = var.network_name
+    name = "${var.network_name}-${terraform.workspace}"
 }
 
 resource "docker_volume" "db_data" {
-    name = "db_data"
+    name = "db_data-${terraform.workspace}"
 }
 
 //PostgreSQL container
 resource "docker_container" "db" {
-  name  = "postgres-db"
+  name  = "postgres-db-${terraform.workspace}"
   image = var.db_image
 
   restart = "unless-stopped"
@@ -39,7 +39,7 @@ resource "docker_container" "db" {
 
 //Backend container
 resource "docker_container" "backend" {
-  name  = "backend-app"
+  name  = "backend-app-${terraform.workspace}"
   image = "nginxdemos/hello"
 
   healthcheck {
@@ -58,7 +58,7 @@ resource "docker_container" "backend" {
 
 //Nginx container
 resource "docker_container" "web" {
-  name  = "nginx-web"
+  name  = "nginx-web-${terraform.workspace}"
   image = "nginx:latest"
 
   ports {
